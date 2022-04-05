@@ -1,0 +1,107 @@
+*{
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-family: 'Chivo', sans-serif;
+}
+
+body{
+    margin:0;
+    background-color: #42663d;
+}
+
+.container {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.calculator {
+    display:grid;
+    grid-template-columns: repeat(4,75px);
+    grid-template-rows: 160px repeat(5,75px);
+    background-color: #9999ff;
+    border-radius: 20px;
+    box-shadow: 5px 4px 0px 5px #2e2e4c;
+    padding:10px
+}
+
+button {
+    cursor: pointer;
+    margin:5px;
+    padding:0;
+    border-radius: 10px;
+    font-size: 2em;
+    background-color: #9999ff;
+    font-weight: 200 bold;
+    border:none;
+    box-shadow: 4px 4px 7px -3px #000000, -5px -5px 15px 3px #9989ff;
+}
+
+.top-button {
+    grid-column: 1/-1;
+    text-align: right;
+    margin: 25px 0.1em 0.1em;
+
+}
+
+
+#C{
+    background-color: red;
+    border-radius: 5px;
+}
+
+#row{
+    background-color: gray;
+    border-radius: 5px;
+}
+
+.top-button button {
+    width: 66px;
+    padding: 0;
+    margin:3px;
+    font-size: 1.3em;
+    font-weight: 200 bold;
+}
+
+button:focus{
+    outline:none;
+}
+
+button:active{
+    background-color:#8a8ae6 ;
+}
+
+.display {
+    grid-column: 1 / -1;
+    padding: 15px;
+    display: flex;
+    background-color: #2e2e4c;
+    border-radius: 20px;
+    margin: 5px 5px 10px ;
+    flex-direction: column;
+    text-align: right;
+    justify-content: space-between;
+    word-break: break-all;
+    align-items: flex-end;
+    box-shadow: 0px 0px 0px 5px #00000033;
+}
+
+.display .top-display {
+    font-size: 1.2em;
+}
+
+#zero{
+    grid-column: 2 span;
+}
+
+
+#top-number {
+    font-size: 2.3em;
+    color: white;
+}
+
+#bottom-number{
+    font-size: 2em;
+    color: white;
+}
