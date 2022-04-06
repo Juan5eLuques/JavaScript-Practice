@@ -14,3 +14,8 @@ ButtonOperators.forEach(button=>{
     button.addEventListener('click',() =>display.eventCalculator(button.value))
 });
 
+display.printNumbers();
+
+function syntaxError() {
+    display.clearDisplay();
+}
