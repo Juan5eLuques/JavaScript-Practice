@@ -5,7 +5,8 @@ class Display {
         this.calculator=new Calculator();
         this.typeOperator=undefined;
         this.newValue='';
-        this.currentValue='';
+        this.currentValue=0;
+        this.firstTime=true;
         this.signos = {
             add: '+',
             division: '%',
@@ -15,27 +16,37 @@ class Display {
     }
 
     deleteNumber(){
+        if (this.firstTime) this.currentValue=this.currentValue.toString().slice(0,-1);
         this.newValue=this.newValue.toString().slice(0,-1);
         this.printNumbers();
     }
 
     clearDisplay(){
-        this.currentValue='';
-        this.newValue='';
+        this.currentValue=0;
         this.typeOperator=undefined;
+        this.newValue='';
+        this.firstTime=true;
         this.printNumbers();
     }
-
+    
+    syntaxError(){
+        this.currentValue='SyntaxError'
+        this.printNumbers(this.firstTime);
+        setTimeout(()=>this.clearDisplay(),3000);
+    }
 
     addNumberToDisplay(number){
-
+        if (this.firstTime) {
+            this.currentValue=((this.currentValue*10))+ parseInt(number);
+            this.printNumbers(this.firstTime);
+            return;
+        }
         this.newValue= this.newValue.toString() + number.toString();
         this.printNumbers();
-        
     }
 
-    printNumbers() {
-        this.displayBottomButton.textContent = this.newValue;
+    printNumbers(firstTime) {
+        if (!firstTime) this.displayBottomButton.textContent = this.newValue;
         this.displayTopButton.textContent = `${this.currentValue} ${this.signos[this.typeOperator] || ''}`;
     }
 
@@ -52,26 +63,18 @@ class Display {
 
     eventCalculator(type){
 
-        if (this.currentValue==this.newValue && this.typeOperator=='substraction'){
-            this.currentValue=0;
-            this.newValue='';
-            this.printNumbers();
-            this.typeOperator=type;
-        }
+        if (this.firstTime)this.firstTime=false;
 
-        if ((this.currentValue==0 || this.newValue==0) && this.typeOperator=='prod'){
-            this.currentValue=0;
-            this.newValue='';
-            this.printNumbers();
-            this.typeOperator=type;
-        }
-        
-        else {
         this.typeOperator !== 'equal' && this.calculate();
         this.typeOperator=type;
-        this.currentValue= this.newValue || this.currentValue;
+        this.currentValue= this.newValue.toString() || this.currentValue;
         this.newValue='';
+            if (isNaN(this.currentValue)){
+                this.syntaxError();
+                return;
+                }
         this.printNumbers();
-        }
     }
+
+
 }

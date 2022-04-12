@@ -6,7 +6,9 @@
 
 body{
     margin:0;
-    background-color: #42663d;
+    background-image: url('.//background.png');
+    background-size: cover;
+    background-position: center;
 }
 
 .container {
@@ -20,9 +22,9 @@ height: 100vh;
     display:grid;
     grid-template-columns: repeat(4,75px);
     grid-template-rows: 160px repeat(5,75px);
-    background-color: #9999ff;
-    border-radius: 20px;
-    box-shadow: 5px 4px 0px 5px #2e2e4c;
+    background-color: #353535;
+    border-radius: 10px;
+    box-shadow: 5px 4px 0px 5px #2B2B2B;
     padding:10px
 }
 
@@ -30,12 +32,12 @@ button {
     cursor: pointer;
     margin:5px;
     padding:0;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 2em;
-    background-color: #9999ff;
+    background-color: #6096ba;
     font-weight: 200 bold;
     border:none;
-    box-shadow: 4px 4px 7px -3px #000000, -5px -5px 15px 3px #9989ff;
+    box-shadow: 4px 4px 7px -3px #000000;
 }
 
 .top-button {
@@ -52,7 +54,7 @@ button {
 }
 
 #row{
-    background-color: gray;
+    background-color: red;
     border-radius: 5px;
 }
 
@@ -69,15 +71,23 @@ button:focus{
 }
 
 button:active{
-    background-color:#8a8ae6 ;
+    background-color:#5893BA ;
+}
+
+.operator {
+    background-color: #ee9b00;
+}
+
+.operator:active{
+    background-color: #E79600;
 }
 
 .display {
     grid-column: 1 / -1;
     padding: 15px;
     display: flex;
-    background-color: #2e2e4c;
-    border-radius: 20px;
+    background-color: #8b8c89;
+    border-radius: 10px;
     margin: 5px 5px 10px ;
     flex-direction: column;
     text-align: right;
