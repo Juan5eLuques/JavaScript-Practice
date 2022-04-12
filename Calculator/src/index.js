@@ -6,6 +6,7 @@ const ButtonOperators=document.querySelectorAll('.operator');
 
 const display = new Display(displayTopNumber,displayBottomNumber);
 
+
 buttonsNumbers.forEach(button=>{
     button.addEventListener('click',()=>display.addNumberToDisplay(button.innerHTML))
 });
@@ -15,7 +16,3 @@ ButtonOperators.forEach(button=>{
 });
 
 display.printNumbers();
-
-function syntaxError() {
-    display.clearDisplay();
-}

@@ -16,7 +16,14 @@ class Display {
     }
 
     deleteNumber(){
-        if (this.firstTime) this.currentValue=this.currentValue.toString().slice(0,-1);
+        if (this.firstTime) {
+            if (this.currentValue==0 || this.currentValue % 10 == this.currentValue) {
+                this.currentValue=0;
+                this.printNumbers();
+                return;
+            }
+            this.currentValue=this.currentValue.toString().slice(0,-1);   
+        }
         this.newValue=this.newValue.toString().slice(0,-1);
         this.printNumbers();
     }
@@ -29,8 +36,8 @@ class Display {
         this.printNumbers();
     }
     
-    syntaxError(){
-        this.currentValue='SyntaxError'
+    indeterminacy(){
+        this.currentValue='Indeterminacy';
         this.printNumbers(this.firstTime);
         setTimeout(()=>this.clearDisplay(),3000);
     }
@@ -70,7 +77,7 @@ class Display {
         this.currentValue= this.newValue.toString() || this.currentValue;
         this.newValue='';
             if (isNaN(this.currentValue)){
-                this.syntaxError();
+                this.indeterminacy();
                 return;
                 }
         this.printNumbers();
